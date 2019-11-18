@@ -69,7 +69,7 @@ def conv_gradient_check():
     # 计算forward值
     a, cl = init_test()
     output = cl.forward(a)
-    print np.transpose(output, [0, 3, 1, 2])
+    print( np.transpose(output, [0, 3, 1, 2]) )
     # 求取sensitivity map，是一个全1数组
     sensitivity_array =  np.ones(cl.output.shape,
                                 dtype=np.float64) / 2
@@ -88,8 +88,8 @@ def conv_gradient_check():
                 err2 = error_function(cl.output)
                 expect_grad = (err1 - err2) / (2 * epsilon)
                 cl.filters[0].W[d,i,j] += epsilon
-                print 'weights(%d,%d,%d): expected - actural %f - %f' % (
-                    d, i, j, expect_grad, cl.filters[0].delta_W[d,i,j])
+                print('weights(%d,%d,%d): expected - actural %f - %f' % (
+                    d, i, j, expect_grad, cl.filters[0].delta_W[d,i,j]) )
 
     cl.filters[0].b += epsilon
     cl.forward(a)
@@ -100,8 +100,8 @@ def conv_gradient_check():
     err2 = error_function(cl.output)
     expect_grad = (err1 - err2) / (2 * epsilon)
     cl.filters[0].b += epsilon
-    print 'biases(%d,%d,%d): expected - actural %f - %f' % (
-        d, i, j, expect_grad, cl.filters[0].delta_b)
+    print( 'biases(%d,%d,%d): expected - actural %f - %f' % (
+        d, i, j, expect_grad, cl.filters[0].delta_b))
 
 
 def max_pool_gradient_check():
@@ -127,11 +127,11 @@ def max_pool_gradient_check():
     a = np.expand_dims(a, 0)
     mp = MaxPoolingLayer((2,2), (1,5,5,3), [1,1], 0)
     output = mp.forward(a)
-    print output.transpose((0,3,1,2))
+    print( output.transpose((0,3,1,2)))
     sensitivity_array = np.ones(mp.output.shape,
                             dtype=np.float64)
     delta = mp.backward(sensitivity_array)
-    print delta.transpose([0,3,1,2])
+    print( delta.transpose([0,3,1,2]))
 
 
 def avg_pool_gradient_check():
@@ -157,11 +157,11 @@ def avg_pool_gradient_check():
     a = np.expand_dims(a, 0)
     mp = AvgPoolingLayer((2,2), (1,5,5,3), [1,1], 0)
     output = mp.forward(a)
-    print output.transpose([0,3,1,2])
+    print( output.transpose([0,3,1,2]))
     sensitivity_array = np.ones(mp.output.shape,
                             dtype=np.float64)
     delta = mp.backward(sensitivity_array)
-    print delta.transpose([0,3,1,2])
+    print( delta.transpose([0,3,1,2]))
 
 
 if __name__ == '__main__':
