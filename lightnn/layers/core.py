@@ -113,6 +113,8 @@ class FullyConnected(Layer):
 
         # Return: 经过该层的输出结果
         """
+        print(" core.py: Fp ..........")
+            
         inputs = np.asarray(inputs)
         if len(inputs.shape) == 1:
             inputs = inputs[None,:]
