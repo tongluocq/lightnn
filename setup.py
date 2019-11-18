@@ -7,9 +7,9 @@ from setuptools import find_packages
   
 PACKAGE = "lightnn"  
 NAME = "lightnn"  
-DESCRIPTION = "This package can download funds data from https://github.com/l11x0m7/lightnn. For details, please visit https://skyhigh233.com."  
-AUTHOR = "Xuming Lin"  
-AUTHOR_EMAIL = "l11x0m7@gmail.com"  
+DESCRIPTION = "This package can download funds data from https://github.com/tongluocq/lightnn. For details, please visit https://skyhigh233.com."  
+AUTHOR = "Myleo"  
+AUTHOR_EMAIL = "aaaaaa@gmail.com"  
 URL = "https://github.com/tongluocq/lightnn"  
 VERSION = __import__(PACKAGE).__version__  
     
